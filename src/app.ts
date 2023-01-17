@@ -3,6 +3,9 @@ import morgan from "morgan";
 import {create} from "express-handlebars";
 import path from "path";
 
+import indexRoutes from "./routes/index";
+import tasksRoutes from "./routes/tasks";
+
 
 
 class Application {
@@ -33,9 +36,15 @@ class Application {
 
   middlewares() {
     this.app.use(morgan("dev"));
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: false }));
   }
 
-  routes() {}
+  routes() {
+    this.app.use(indexRoutes);
+    this.app.use(express.static(path.join(__dirname, "public")));
+    this.app.use("/tasks", tasksRoutes);
+  }
 
   start() {
     this.app.listen(this.app.get("port"), () => {
