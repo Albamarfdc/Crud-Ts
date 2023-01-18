@@ -2,13 +2,12 @@
   <div class="col-md-4 offset-md-4">
     <div class="card">
       <div class="card-body">
-        <form action="/tasks/edit/{{tasks._id}}" method="POST">
+        <form action="/tasks/create" method="POST">
           <div class="form-group">
             <input
               type="text"
               name="title"
               placeholder="white your title"
-              value="{{tasks.title}}"
               class="form-control"
               autofocus
             />
@@ -18,7 +17,6 @@
               type="text"
               name="description"
               placeholder="white a description"
-               value="{{tasks.description}}"
               class="form-control"
             />
           </div>
